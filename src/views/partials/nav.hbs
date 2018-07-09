@@ -4,8 +4,10 @@
             <li {{#is nav 'dashboard'}} class='active' {{/is}}>
                 <a class="navHome" href="/dashboard"><i class="material-icons">dashboard</i><span class="show-for-large-up">Dashboard</span></a>
             </li>
+
+            <!-- KYC -->
             <li class="hasSubMenu{{#is nav 'tickets'}} active {{/is}}" data-nav-id="tickets" style="position: relative;" data-nav-accordion data-nav-accordion-target="side-nav-accordion-tickets">
-                <a class="navTickets no-ajaxy" href="/tickets"><i class="material-icons">assignment</i>Tickets</a>
+                <a class="navTickets no-ajaxy" href="/tickets"><i class="material-icons">assignment</i>KYC</a>
 
                 <ul id="side-nav-accordion-tickets" class="side-nav-sub side-nav-accordion">
                     <li {{#is subnav 'tickets-active'}} class='active' {{/is}}><a href="/tickets/active"><i class="material-icons fa-sub-icon">timer</i>Active</a></li>
@@ -24,6 +26,54 @@
                     <li {{#is subnav 'tickets-closed'}} class='active' {{/is}}><a href="/tickets/closed"><i class="material-icons fa-sub-icon">&#xE2C7;</i>Closed</a></li>
                 </ul>
             </li>
+
+            <!-- Compliance -->
+            <!-- Functionality not completed -->
+            <li class="hasSubMenu{{#is nav 'compliance'}} active {{/is}}" data-nav-id="compliance" style="position: relative;" data-nav-accordion data-nav-accordion-target="side-nav-accordion-compliance">
+                <a class="navTickets no-ajaxy" href="/compliance"><i class="material-icons">check</i>Compliance</a>
+
+                <ul id="side-nav-accordion-compliance" class="side-nav-sub side-nav-accordion">
+                    <li {{#is subnav 'compliance-active'}} class='active' {{/is}}><a href="/compliance/active"><i class="material-icons fa-sub-icon">timer</i>Active</a></li>
+                    <li {{#is subnav 'compliance-assigned'}} class='active' {{/is}}>
+                        <a href="/compliance/assigned">
+                            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path d="M18,16H6V15.1C6,13.1 10,12 12,12C14,12 18,13.1 18,15.1M12,5.3C13.5,5.3 14.7,6.5 14.7,8C14.7,9.5 13.5,10.7 12,10.7C10.5,10.7 9.3,9.5 9.3,8C9.3,6.5 10.5,5.3 12,5.3M19,2H5C3.89,2 3,2.89 3,4V18A2,2 0 0,0 5,20H9L12,23L15,20H19A2,2 0 0,0 21,18V4C21,2.89 20.1,2 19,2Z" />
+                            </svg>
+                            Assigned
+                        </a>
+                    </li>
+                    <hr/>
+                    <li {{#is subnav 'compliance-new'}} class='active' {{/is}}><a href="/compliance/new"><i class="material-icons fa-sub-icon">&#xE24D;</i>New</a></li>
+                    <li {{#is subnav 'compliance-pending'}} class='active' {{/is}}><a href="/compliance/pending"><i class="material-icons fa-sub-icon">&#xE629;</i>Pending</a></li>
+                    <li {{#is subnav 'compliance-open'}} class='active' {{/is}}><a href="/compliance/open"><i class="material-icons fa-sub-icon">&#xE2C8;</i>Open</a></li>
+                    <li {{#is subnav 'compliance-closed'}} class='active' {{/is}}><a href="/compliance/closed"><i class="material-icons fa-sub-icon">&#xE2C7;</i>Closed</a></li>
+                </ul>
+            </li>
+
+            <!-- Withdrawals -->
+            <!-- Functionality not completed -->
+            <li class="hasSubMenu{{#is nav 'withdrawals'}} active {{/is}}" data-nav-id="withdrawals" style="position: relative;" data-nav-accordion data-nav-accordion-target="side-nav-accordion-withdrawals">
+                <a class="navTickets no-ajaxy" href="/withdrawals"><i class="material-icons">money</i>Withdrawals</a>
+
+                <ul id="side-nav-accordion-withdrawals" class="side-nav-sub side-nav-accordion">
+                    <li {{#is subnav 'withdrawals-active'}} class='active' {{/is}}><a href="/withdrawals/active"><i class="material-icons fa-sub-icon">timer</i>Active</a></li>
+                    <li {{#is subnav 'withdrawals-assigned'}} class='active' {{/is}}>
+                        <a href="/withdrawals/assigned">
+                            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path d="M18,16H6V15.1C6,13.1 10,12 12,12C14,12 18,13.1 18,15.1M12,5.3C13.5,5.3 14.7,6.5 14.7,8C14.7,9.5 13.5,10.7 12,10.7C10.5,10.7 9.3,9.5 9.3,8C9.3,6.5 10.5,5.3 12,5.3M19,2H5C3.89,2 3,2.89 3,4V18A2,2 0 0,0 5,20H9L12,23L15,20H19A2,2 0 0,0 21,18V4C21,2.89 20.1,2 19,2Z" />
+                            </svg>
+                            Assigned
+                        </a>
+                    </li>
+                    <hr/>
+                    <li {{#is subnav 'withdrawals-new'}} class='active' {{/is}}><a href="/withdrawals/new"><i class="material-icons fa-sub-icon">&#xE24D;</i>New</a></li>
+                    <li {{#is subnav 'withdrawals-pending'}} class='active' {{/is}}><a href="/withdrawals/pending"><i class="material-icons fa-sub-icon">&#xE629;</i>Pending</a></li>
+                    <li {{#is subnav 'withdrawals-open'}} class='active' {{/is}}><a href="/withdrawals/open"><i class="material-icons fa-sub-icon">&#xE2C8;</i>Open</a></li>
+                    <li {{#is subnav 'withdrawals-closed'}} class='active' {{/is}}><a href="/withdrawals/closed"><i class="material-icons fa-sub-icon">&#xE2C7;</i>Closed</a></li>
+                </ul>
+            </li>
+
+            <!-- Messages -->
             <li {{#is nav 'messages'}} class='active' {{/is}}>
                 <a href="/messages" class="navMessages ajaxify" data-url="/messages" data-sub-menu="side-nav-sub-messages"><i class="material-icons">chat</i>Messages</a>
             </li>
