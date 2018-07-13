@@ -251,8 +251,8 @@ api_tickets.create = function(req, res) {
     var ticketModel = require('../../../models/ticket');
     var ticket = new ticketModel(postData);
     // Jitin: Accept Owner from API
-    // ticket.owner = req.user._id;
-    ticket.owner = postData.owner;
+    ticket.owner = req.user._id;
+    // ticket.owner = postData.owner;
     var marked = require('marked');
     var tIssue = ticket.issue;
     tIssue = tIssue.replace(/(\r\n|\n\r|\r|\n)/g, "<br>");
