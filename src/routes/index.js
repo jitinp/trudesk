@@ -120,6 +120,7 @@ function mainRoutes(router, middleware, controllers) {
     router.get('/api/v1/logout', middleware.api, controllers.api.logout);
     router.post('/api/v1/devices/settoken', middleware.api, controllers.api.devices.setDeviceToken);
 
+
     router.get('/api/v1/tickets', middleware.api, controllers.api.tickets.get);
     router.get('/api/v1/tickets/search', middleware.api, controllers.api.tickets.search);
     router.post('/api/v1/tickets/create', middleware.api, controllers.api.tickets.create);
@@ -208,7 +209,6 @@ function mainRoutes(router, middleware, controllers) {
     router.post('/api/v1/public/tickets/create', middleware.checkCaptcha, controllers.api.tickets.createPublicTicket);
     router.post('/api/v1/public/account/create', middleware.checkCaptcha, controllers.api.users.createPublicAccount);
 
-
     router.get('/api/v1/admin/restart', middleware.api, middleware.isAdmin, function(req, res) {
         if (req.user.role === 'admin') {
             var pm2 = require('pm2');
@@ -232,6 +232,10 @@ function mainRoutes(router, middleware, controllers) {
             return res.status(401).json({success: false, error: 'Unauthorized!'});
         }
     });
+
+
+    // cosfinex apis
+    router.get('/api/v1/cosfinex/getUpdatedTicketStatus', controllers.api.cosfinex.getListOfTickets);
 
     if (global.env === 'development') {
         router.get('/debug/populatedb', controllers.debug.populatedatabase);

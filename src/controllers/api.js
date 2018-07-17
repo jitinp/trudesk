@@ -27,7 +27,10 @@ var async = require('async'),
     api_groups_v1       = require('./api/v1/groups'),
     api_reports_v1      = require('./api/v1/reports'),
     api_settings_v1     = require('./api/v1/settings'),
-    api_plugins_v1      = require('./api/v1/plugins');
+    api_plugins_v1      = require('./api/v1/plugins'),
+
+    // cosfinexApi
+    api_cosfinex_v1      = require('./api/v1/cosfinex');
 
 /**
  * @since 1.0
@@ -55,6 +58,8 @@ apiController.groups = api_groups_v1;
 apiController.reports = api_reports_v1;
 apiController.settings = api_settings_v1;
 apiController.plugins = api_plugins_v1;
+
+apiController.cosfinex = api_cosfinex_v1;
 
 apiController.import = function(req, res) {
     var fs = require('fs');

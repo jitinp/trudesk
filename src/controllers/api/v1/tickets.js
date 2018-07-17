@@ -16,6 +16,7 @@ var async           = require('async'),
     _               = require('lodash'),
     moment          = require('moment'),
     winston         = require('winston'),
+    request         = require('request'),
     permissions     = require('../../../permissions'),
     emitter         = require('../../../emitter');
 
@@ -251,8 +252,8 @@ api_tickets.create = function(req, res) {
     var ticketModel = require('../../../models/ticket');
     var ticket = new ticketModel(postData);
     // Jitin: Accept Owner from API
-    // ticket.owner = req.user._id;
-    ticket.owner = postData.owner;
+    ticket.owner = req.user._id;
+    // ticket.owner = postData.owner;
     var marked = require('marked');
     var tIssue = ticket.issue;
     tIssue = tIssue.replace(/(\r\n|\n\r|\r|\n)/g, "<br>");
@@ -505,11 +506,14 @@ api_tickets.update = function(req, res) {
         var ticketModel = require('../../../models/ticket');
         ticketModel.getTicketById(oId, function(err, ticket) {
             if (err) return res.status(400).json({success: false, error: "Invalid Post Data"});
+            let updateStatus = false;
             async.parallel([
                 function(cb) {
                     if (!_.isUndefined(reqTicket.status)) {
                         ticket.setStatus(req.user, reqTicket.status, function (e, t) {
                             ticket = t;
+                            console.log("taskUpdated");
+                            updateStatus = true;
 
                             cb();
                         });
@@ -575,6 +579,10 @@ api_tickets.update = function(req, res) {
 
                     emitter.emit('ticket:updated', t);
 
+                    // update the cosfinex server for the user
+                    if(updateStatus){
+                        updateCosfinexServer(t);
+                    }
                     return res.json({
                         success: true,
                         error: null,
@@ -587,6 +595,28 @@ api_tickets.update = function(req, res) {
         return res.status(403).json({success: false, error: "Invalid Access Token"});
     }
 };
+
+function updateCosfinexServer(ticketData,cb)  {
+
+    var postObject = {
+        name: "Donald Duck",
+        city: "Duckburg",
+        ownerEmail : ticketData.owner.email
+    }
+
+    var options = {
+      uri: 'https://www.w3schools.com/jquery/demo_test_post.asp',
+      body: postObject,
+      json: true
+    }
+    console.log(options);
+    request.post(options, function(error, response, body){
+      console.log(body,error,response);
+      if(error){
+        cb();
+      }
+    });
+}
 
 /**
  * @api {delete} /api/v1/tickets/:id Delete Ticket
