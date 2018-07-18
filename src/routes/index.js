@@ -235,7 +235,7 @@ function mainRoutes(router, middleware, controllers) {
 
 
     // cosfinex apis
-    router.get('/api/v1/cosfinex/getUpdatedTicketStatus', controllers.api.cosfinex.getListOfTickets);
+    router.get('/api/v1/cosfinex/get-updated-ticket-status', controllers.api.cosfinex.getListOfTickets);
 
     if (global.env === 'development') {
         router.get('/debug/populatedb', controllers.debug.populatedatabase);
