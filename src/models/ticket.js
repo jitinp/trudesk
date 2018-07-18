@@ -17,6 +17,7 @@ var mongoose            = require('mongoose');
 var _                   = require('lodash');
 var moment              = require('moment');
 var hash                = require('object-hash');
+var moment              = require('moment');
 // var redisCache          = require('../cache/rediscache');
 
 //Needed - Even if unused!
@@ -550,6 +551,9 @@ ticketSchema.methods.removeSubscriber = function(userId, callback) {
  *    //tickets is an array
  * });
  */
+
+
+
 ticketSchema.statics.getAll = function(callback) {
     var self = this;
     var q = self.model(COLLECTION).find({deleted: false})
@@ -1248,6 +1252,22 @@ ticketSchema.statics.softDelete = function(oId, callback) {
 
     return self.model(COLLECTION).findOneAndUpdate({_id: oId}, {deleted: true}, callback);
 };
+
+// cosfinesSearch
+
+ticketSchema.statics.getTicketsAcceptedOrRejectedForConfinex = function(queryObject, callback) {
+  // status
+  // 0 -  open
+  // 1 - pending
+  // 2 - Approved
+  // 3 - Rejected
+    var self = this;
+    var q = self.model(COLLECTION).find({$and: [{'status': [2,3] },{'history.date': {$gte: queryObject.startTime,$lt:queryObject.endTime}}]}
+    ,{history: 0});
+
+    return q.lean().exec(callback);
+};
+
 
 function statusToString(status) {
     var str;

@@ -15,28 +15,28 @@
                     <div class="floating-ticket-status" data-ticketId="{{data.ticket._id}}">
                         {{#is data.ticket.status 0}}
                             {{#canUser data.user "ticket:edit"}}
-                                <div class="ticket-status ticket-new cursor-pointer" ng-click="showStatusSelect()"><span>New</span></div>
+                                <div class="ticket-status ticket-pending cursor-pointer" ng-click="showStatusSelect()"><span>Open</span></div>
                             {{else}}
-                                <div class="ticket-status ticket-new"><span>New</span></div>
+                                <div class="ticket-status ticket-pending"><span>New</span></div>
                             {{/canUser}}
                         {{/is}}
                         {{#is data.ticket.status 1}}
                             {{#canUser data.user "ticket:edit"}}
-                                <div class="ticket-status ticket-open cursor-pointer" ng-click="showStatusSelect()"><span>Open</span></div>
+                                <div class="ticket-status ticket-open cursor-pointer" ng-click="showStatusSelect()"><span>Pending</span></div>
                             {{else}}
                                 <div class="ticket-status ticket-open"><span>Open</span></div>
                             {{/canUser}}
                         {{/is}}
                         {{#is data.ticket.status 2}}
                             {{#canUser data.user "ticket:edit"}}
-                                <div class="ticket-status ticket-pending cursor-pointer" ng-click="showStatusSelect()"><span>Pending</span></div>
+                                <div class="ticket-status ticket-pending cursor-pointer" ng-click="showStatusSelect()"><span>Approved</span></div>
                             {{else}}
                                 <div class="ticket-status ticket-pending"><span>Pending</span></div>
                             {{/canUser}}
                         {{/is}}
                         {{#is data.ticket.status 3}}
                             {{#canUser data.user "ticket:edit"}}
-                                <div class="ticket-status ticket-closed cursor-pointer" ng-click="showStatusSelect()"><span>Closed</span></div>
+                                <div class="ticket-status ticket-closed cursor-pointer" ng-click="showStatusSelect()"><span>Rejected</span></div>
                             {{else}}
                                 <div class="ticket-status ticket-closed"><span>Closed</span></div>
                             {{/canUser}}
@@ -44,10 +44,10 @@
                         <span class="drop-icon material-icons" style="left: auto; right: 20px; bottom: -18px">keyboard_arrow_down</span>
                         <div id="statusSelect" close-mouse-up class="hide">
                             <ul>
-                                <li class="ticket-status ticket-new" ng-click="changeStatus(0)"><span>New</span></li>
-                                <li class="ticket-status ticket-open" ng-click="changeStatus(1)"><span>Open</span></li>
-                                <li class="ticket-status ticket-pending" ng-click="changeStatus(2)"><span>Pending</span></li>
-                                <li class="ticket-status ticket-closed" ng-click="changeStatus(3)"><span>Closed</span></li>
+                                <li class="ticket-status ticket-pending" ng-click="changeStatus(0)"><span>Open</span></li>
+                                <li class="ticket-status ticket-open" ng-click="changeStatus(1)"><span>Pending</span></li>
+                                <li class="ticket-status ticket-new" ng-click="changeStatus(2)"><span>Approved</span></li>
+                                <li class="ticket-status ticket-closed" ng-click="changeStatus(3)"><span>Rejected</span></li>
                             </ul>
                         </div>
                     </div>
