@@ -1263,7 +1263,7 @@ ticketSchema.statics.getTicketsAcceptedOrRejectedForConfinex = function(queryObj
   // 3 - Rejected
     var self = this;
     var q = self.model(COLLECTION).find({$and: [{'status': [2,3] },{'history.date': {$gte: queryObject.startTime,$lt:queryObject.endTime}}]}
-    ,{history: 0});
+    ,{history: 0}).populate('owner','email');
 
     return q.lean().exec(callback);
 };
@@ -1271,18 +1271,35 @@ ticketSchema.statics.getTicketsAcceptedOrRejectedForConfinex = function(queryObj
 
 function statusToString(status) {
     var str;
+    // switch (status) {
+    //     case 0:
+    //         str = 'New';
+    //         break;
+    //     case 1:
+    //         str = 'Open';
+    //         break;
+    //     case 2:
+    //         str = 'Pending';
+    //         break;
+    //     case 3:
+    //         str = 'Closed';
+    //         break;
+    //     default:
+    //         str = status;
+    //         break;
+    // }
     switch (status) {
         case 0:
-            str = 'New';
-            break;
-        case 1:
             str = 'Open';
             break;
-        case 2:
+        case 1:
             str = 'Pending';
             break;
+        case 2:
+            str = 'Approved';
+            break;
         case 3:
-            str = 'Closed';
+            str = 'Rejected';
             break;
         default:
             str = status;

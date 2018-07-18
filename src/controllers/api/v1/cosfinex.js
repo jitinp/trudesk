@@ -15,8 +15,6 @@ api_cosfinex.getListOfTickets = function(req, res) {
           startTime :  startTime,//
           endTime: endTime
       };
-
-      console.log(queryObject);
       var ticketModel = require('../../../models/ticket');
 
       async.waterfall([
