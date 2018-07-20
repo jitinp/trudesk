@@ -6,7 +6,7 @@ var async = require('async'),
 api_cosfinex.getListOfTickets = function(req, res) {
 
       var status = req.query.status || 1;
-      var startTime = req.query.startTime || "Jan 1, 1970 00:00:00";
+      var startTime = req.query.start_time || "Jan 1, 1970 00:00:00";
       var endTime = new Date().toISOString();
       var user = req.user;
 
