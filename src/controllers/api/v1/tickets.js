@@ -260,6 +260,7 @@ api_tickets.create = function(req, res) {
     ticket.issue = marked(tIssue);
     ticket.history = [HistoryItem];
     ticket.subscribers = [req.user._id];
+    ticket.status = 0;
 
     ticket.save(function(err, t) {
         if (err) {
