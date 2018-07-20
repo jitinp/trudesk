@@ -7,7 +7,7 @@ api_cosfinex.getListOfTickets = function(req, res) {
 
       var status = req.query.status || 1;
       var startTime = req.query.startTime || "Jan 1, 1970 00:00:00";
-      var endTime = moment(new Date().toISOString()).format('YYYY-MM-DD hh:mm:ss');
+      var endTime = new Date().toISOString();
       var user = req.user;
 
 
