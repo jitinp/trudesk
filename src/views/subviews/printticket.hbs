@@ -8,16 +8,16 @@
                     <div id="__ticketStatus" class="hide">{{data.ticket.status}}</div>
                     <div class="floating-ticket-status" data-ticketId="{{data.ticket._id}}">
                         {{#is data.ticket.status 0}}
-                                <div class="ticket-status ticket-new"><span>New</span></div>
+                                <div class="ticket-status ticket-pending"><span>Open</span></div>
                         {{/is}}
                         {{#is data.ticket.status 1}}
-                                <div class="ticket-status ticket-open"><span>Open</span></div>
+                                <div class="ticket-status ticket-open"><span>Pending</span></div>
                         {{/is}}
                         {{#is data.ticket.status 2}}
-                                <div class="ticket-status ticket-pending"><span>Pending</span></div>
+                                <div class="ticket-status ticket-new"><span>Approved</span></div>
                         {{/is}}
                         {{#is data.ticket.status 3}}
-                                <div class="ticket-status ticket-closed"><span>Closed</span></div>
+                                <div class="ticket-status ticket-closed"><span>Rejected</span></div>
                         {{/is}}
                     </div>
                 </div>

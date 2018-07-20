@@ -116,12 +116,12 @@
                     <tbody>
                     {{#each data.tickets}}
                         {{#if_eq status compare=0}}
-                            <tr class="ticket-new" data-ticket="{{uid}}" data-ticketOid="{{_id}}">
+                            <tr class="ticket-pending" data-ticket="{{uid}}" data-ticketOid="{{_id}}">
                                 <td class="ticket-priority ticket-priority-{{priority}}">
                                     <input id="c_{{_id}}" type="checkbox" class="poloCheckbox" />
                                     <label for="c_{{_id}}"></label>
                                 </td>
-                                <td class="ticket-status ticket-new"><span>New</span></td>
+                                <td class="ticket-status ticket-pending"><span>Open</span></td>
                                 <td>{{uid}}</td>
                                 <td>{{subject}}</td>
                                 <td>{{{formatDate date "MMM DD, YY"}}}</td>
@@ -149,7 +149,7 @@
                                     <input id="c_{{_id}}" type="checkbox" class="poloCheckbox"/>
                                     <label for="c_{{_id}}"></label>
                                 </td>
-                                <td class="ticket-status ticket-open"><span>Open</span></td>
+                                <td class="ticket-status ticket-open"><span>Pending</span></td>
                                 <td>{{uid}}</td>
                                 <td>{{subject}}</td>
                                 <td>{{{formatDate date "MMM DD, YY"}}}</td>
@@ -172,12 +172,12 @@
                             </tr>
                         {{/is}}
                         {{#is status 2}}
-                            <tr class="ticket-pending" data-ticket="{{uid}}" data-ticketOid="{{_id}}">
+                            <tr class="ticket-new" data-ticket="{{uid}}" data-ticketOid="{{_id}}">
                                 <td class="ticket-priority ticket-priority-{{priority}}">
                                     <input id="c_{{_id}}" type="checkbox" class="poloCheckbox"/>
                                     <label for="c_{{_id}}"></label>
                                 </td>
-                                <td class="ticket-status ticket-pending"><span>Pending</span></td>
+                                <td class="ticket-status ticket-new"><span>Approved</span></td>
                                 <td>{{uid}}</td>
                                 <td>{{subject}}</td>
                                 <td>{{{formatDate date "MMM DD, YY"}}}</td>
@@ -205,7 +205,7 @@
                                     <input id="c_{{_id}}" type="checkbox" class="poloCheckbox"/>
                                     <label for="c_{{_id}}"></label>
                                 </td>
-                                <td class="ticket-status ticket-closed"><span>Closed</span></td>
+                                <td class="ticket-status ticket-closed"><span>Rejected</span></td>
                                 <td>{{uid}}</td>
                                 <td>{{subject}}</td>
                                 <td>{{{formatDate date "MMM DD, YY"}}}</td>

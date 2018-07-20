@@ -181,24 +181,23 @@ define('modules/ui', [
                 tStatusBox.removeClass('ticket-open');
                 tStatusBox.removeClass('ticket-pending');
                 tStatusBox.removeClass('ticket-closed');
-
-                var s = 'New';
-                var c = 'ticket-new';
+                var s = 'Open';
+                var c = 'ticket-pending';
                 switch (status) {
                     case 0:
-                        s = 'New';
-                        c = 'ticket-new';
+                        s = 'Open';
+                        c = 'ticket-pending';
                         break;
                     case 1:
-                        s = 'Open';
+                        s = 'Pending';
                         c = 'ticket-open';
                         break;
                     case 2:
-                        s = 'Pending';
-                        c = 'ticket-pending';
+                        s = 'Approved';
+                        c = 'ticket-new';
                         break;
                     case 3:
-                        s = 'Closed';
+                        s = 'Rejected';
                         c = 'ticket-closed';
                         break;
                 }
